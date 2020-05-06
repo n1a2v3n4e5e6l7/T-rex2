@@ -10,7 +10,7 @@ var count=0;
 var cloudImage,obstacle1,obstacle2,obstacle3,obstacle4,obstacle5,obstacle6;
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
-  trex_collided = loadImage("trex_collided.png");
+  trex_collided = loadAnimation("trex_collided.png");
   
   groundImage = loadImage("ground2.png");
   cloudImage = loadImage("cloud.png");
@@ -29,6 +29,7 @@ function setup() {
   
   trex = createSprite(50,180,20,50);
   trex.addAnimation("running", trex_running);
+  trex.addAnimation("collided",trex_collided)
   trex.scale = 0.5;
   
   ground = createSprite(200,180,400,20);
@@ -134,7 +135,7 @@ function reset(){
   gameOver.visible = false;
   ObstaclesGroup.destroyEach();
   CloudsGroup.destroyEach();
-  trex.setAnimation("trex");
+  trex.changeAnimation("running",trex_running );
   count = 0;
   trex.x=50;
   trex.y=180;
